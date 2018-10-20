@@ -18,7 +18,7 @@
   * Testing
 
 ### Results
-A video of the simulated car driving around the track can be found here.
+A video of the simulated car driving around the track can be found [here](https://github.com/shalaka7/udacity_project_10/blob/master/mpc_controller.mp4).
 
 # Discussion/Reflection
 
