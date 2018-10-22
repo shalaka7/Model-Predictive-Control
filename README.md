@@ -68,6 +68,20 @@ Because of the coordinate system transformation - using x, y and psi all of zero
 as lots of the values end up being zero or one. This new predicted state, along with the coefficients, are then fed into
 the mpc.Solve() function found in MPC.cpp.
 
+The approach to dealing with latency was two fold (not counting simply limiting the speed): the original kinematic 
+equations depend upon the actuations from the previous timestep, but with a delay of 100ms (which happens to be the 
+timestep interval) the actuations are applied another timestep later.
+
+
+###Timestep Length and Elapsed Duration (N & dt)
+The number of points(N) and the time interval(dt) define the prediction horizon. The number of points impacts the 
+controller performance as well. I tried to keep the horizon around the same time the waypoints were on the simulator. 
+With too many points the controller starts to run slower, and some times it went wild very easily. After trying with N 
+from 10 to 20 and dt 0.01 to 0.05 milliseconds, I decided to leave them fixed to 10 and 0.01 milliseconds to have a better 
+result tuning the other parameters.
+
+## NOTE : I have used Docker  container to around  problems with IPOPT.
+
 ## Dependencies
 
 * cmake >= 3.5
